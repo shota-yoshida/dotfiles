@@ -1,0 +1,19 @@
+#!/bin/bash
+set -eu
+
+install() {
+  local url=https://$1.git
+  local dir=${2:-~/src/$1}
+  local is_git_dir=$( ( cd $dir 2> /dev/null && git rev-parse 2> /dev/null ) && echo true || echo false )
+
+  if [ $is_git_dir = false ]; then
+    git clone $url $dir
+  else
+    # ( cd $dir; git remote update -p && git merge --ff-only @{u} )
+    ( cd $dir; git pull )
+  fi
+
+}
+
+install github.com/robbyrussell/oh-my-zsh                 ~/.oh-my-zsh
+install github.com/Shougo/dein.vim                        ~/.vim/dein/repos/github.com/Shougo/dein.vim

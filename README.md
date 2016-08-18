@@ -1,4 +1,13 @@
 # dotfiles
 
-## .vimrc
-* 設定内容
+## usage
+
+### zshのインストール
+
+```
+# zshのインストール
+sudo yum install zsh
+
+# ログインシェルの変更
+chsh -s /bin/zsh
+```
