@@ -34,6 +34,8 @@ call dein#add('vim-jp/vimdoc-ja')
 call dein#add('jszakmeister/vim-togglecursor')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('godlygeek/tabular')
+call dein#add('elzr/vim-json')
+call dein#add('embear/vim-localvimrc')
 
 call dein#end()
 
@@ -59,3 +61,12 @@ let g:togglecursor_force='xterm'
 
 " vim-multiple-cursors
 let g:multi_cursor_next_key='<C-n>'
+
+" vim-localvimrc
+let g:localvimrc_ask=0
+let g:localvimrc_sandbox=0
+
+" vim-json
+if dein#tap('vim-json')
+  let g:vim_json_syntax_conceal = 0
+endif
