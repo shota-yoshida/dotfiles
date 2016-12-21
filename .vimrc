@@ -24,7 +24,7 @@ call dein#begin(expand('~/.vim/dein'))
 call dein#add('Shougo/dein.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
-call dein#add('scrooloose/syntastic')
+call dein#add('neomake/neomake')
 call dein#add('mhinz/vim-signify')
 call dein#add('soramugi/auto-ctags.vim')
 call dein#add('kana/vim-fakeclip')
@@ -70,3 +70,6 @@ let g:localvimrc_sandbox=0
 if dein#tap('vim-json')
   let g:vim_json_syntax_conceal = 0
 endif
+
+" neomake
+autocmd! BufWritePost * Neomake
