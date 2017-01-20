@@ -25,7 +25,7 @@ call dein#add('Shougo/dein.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('neomake/neomake')
-call dein#add('mhinz/vim-signify')
+" call dein#add('mhinz/vim-signify')
 call dein#add('soramugi/auto-ctags.vim')
 call dein#add('kana/vim-fakeclip')
 call dein#add('vim-ruby/vim-ruby')
@@ -36,6 +36,7 @@ call dein#add('terryma/vim-multiple-cursors')
 call dein#add('godlygeek/tabular')
 call dein#add('elzr/vim-json')
 call dein#add('embear/vim-localvimrc')
+call dein#add('airblade/vim-gitgutter')
 
 call dein#end()
 
@@ -73,3 +74,25 @@ endif
 
 " neomake
 autocmd! BufWritePost * Neomake
+
+" vim-gitgutter
+function! GGDiffAutoDetectSourceBranch(...)
+  let l:default_source_branch = 'master'
+  if a:1 == ''
+    let l:source_branch = l:default_source_branch
+  else
+    let l:source_branch = a:1
+  endif
+  let l:diff_against = substitute(system('git merge-base ' . l:source_branch . ' HEAD'), '\n', '', '')
+  echom 'diff against: ' . l:diff_against
+  let g:gitgutter_diff_base = l:diff_against
+  GitGutter
+endfunction
+
+function! GGDiff(diff_against)
+  let g:gitgutter_diff_base = a:diff_against
+  GitGutter
+endfunction
+
+command! -nargs=1 GGDiff call GGDiff('<f-args>')
+command! -nargs=? GGDiffAutoDetectSourceBranch call GGDiffAutoDetectSourceBranch('<f-args>')
