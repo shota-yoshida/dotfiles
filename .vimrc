@@ -37,6 +37,7 @@ call dein#add('godlygeek/tabular')
 call dein#add('elzr/vim-json')
 call dein#add('embear/vim-localvimrc')
 call dein#add('airblade/vim-gitgutter')
+call dein#add('tpope/vim-fugitive')
 
 call dein#end()
 
@@ -96,3 +97,24 @@ endfunction
 
 command! -nargs=1 GGDiff call GGDiff('<f-args>')
 command! -nargs=? GGDiffAutoDetectSourceBranch call GGDiffAutoDetectSourceBranch('<f-args>')
+
+"vim-fugitive
+function! GdiffAutoDetectSourceBranch(...)
+  let l:default_source_branch = 'master'
+  if a:1 == ''
+    let l:source_branch = l:default_source_branch
+  else
+    let l:source_branch = a:1
+  endif
+  let l:diff_against = substitute(system('git merge-base ' . l:source_branch . ' HEAD'), '\n', '', '')
+  echom 'diff against: ' . l:diff_against
+  execute 'Gdiff' l:diff_against
+endfunction
+
+command! -nargs=? GdiffAutoDetectSourceBranch call GdiffAutoDetectSourceBranch('<f-args>')
+
+" These highlight settings make so much easier to distinguish them!
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
