@@ -24,6 +24,7 @@ call dein#begin(expand('~/.vim/dein'))
 call dein#add('Shougo/dein.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
+call dein#add('jistr/vim-nerdtree-tabs')
 call dein#add('neomake/neomake')
 " call dein#add('mhinz/vim-signify')
 call dein#add('soramugi/auto-ctags.vim')
@@ -41,7 +42,8 @@ call dein#add('tpope/vim-fugitive')
 
 call dein#end()
 
-nnoremap <silent><C-e> :NERDTreeFind<CR>
+"nnoremap <silent><C-e> :NERDTreeFind<CR>
+map <C-e> <plug>NERDTreeTabsToggle<CR>
 
 " if you call syntax enable after dein doing, syntax disabled
 syntax enable
