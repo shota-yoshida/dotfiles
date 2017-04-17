@@ -44,6 +44,8 @@ call dein#end()
 
 "nnoremap <silent><C-e> :NERDTreeFind<CR>
 map <C-e> <plug>NERDTreeTabsToggle<CR>
+nnoremap <C-n> gt
+nnoremap <C-p> gT
 
 " if you call syntax enable after dein doing, syntax disabled
 syntax enable
@@ -56,6 +58,9 @@ augroup END
 
 " ctag
 let g:auto_ctag = 1
+
+nnoremap <C-]> g<C-]>
+vnoremap <C-]> g<C-]>
 
 " rubocop
 let g:syntastic_ruby_checkers = ['rubocop']
@@ -113,6 +118,15 @@ function! GdiffAutoDetectSourceBranch(...)
   execute 'Gdiff' l:diff_against
 endfunction
 
+"php setting
+let g:php_baselib       = 1
+let g:php_htmlInStrings = 1
+let g:php_noShortTags   = 1
+let g:php_sql_query     = 1
+autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
+autocmd FileType php set makeprg=php\ -l\ %
+autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
+
 command! -nargs=? GdiffAutoDetectSourceBranch call GdiffAutoDetectSourceBranch('<f-args>')
 
 " These highlight settings make so much easier to distinguish them!
@@ -120,3 +134,6 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+highlight Pmenu ctermbg=4
+highlight PmenuSel ctermbg=1
+highlight PMenuSbar ctermbg=4
