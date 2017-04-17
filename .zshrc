@@ -169,6 +169,7 @@ abbreviations=(
     "kds"  "knife data bag show"
     "kcc"  "knife cookbook create"
     "kes"  "knife environment show"
+    "krs"  "knife role show"
     #Chef Command
     "D"    "-c ~/.chef/knifedevjp.rb"
     "DU"   "-c ~/.chef/knifedevus.rb"
