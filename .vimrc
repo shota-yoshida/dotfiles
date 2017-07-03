@@ -15,7 +15,7 @@ set noswapfile
 set clipboard&
 set clipboard^=unnamedplus
 set nocompatible
-set synmaxcol=250
+set synmaxcol=480
 set helplang& helplang=ja
 
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
@@ -25,8 +25,7 @@ call dein#add('Shougo/dein.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('jistr/vim-nerdtree-tabs')
-call dein#add('neomake/neomake')
-" call dein#add('mhinz/vim-signify')
+call dein#add('w0rp/ale')
 call dein#add('soramugi/auto-ctags.vim')
 call dein#add('kana/vim-fakeclip')
 call dein#add('vim-ruby/vim-ruby')
@@ -39,7 +38,8 @@ call dein#add('elzr/vim-json')
 call dein#add('embear/vim-localvimrc')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('tpope/vim-fugitive')
-
+call dein#add('tomasr/molokai')
+call dein#add('thinca/vim-quickrun')
 call dein#end()
 
 "nnoremap <silent><C-e> :NERDTreeFind<CR>
@@ -81,7 +81,7 @@ if dein#tap('vim-json')
 endif
 
 " neomake
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 
 " vim-gitgutter
 function! GGDiffAutoDetectSourceBranch(...)
@@ -129,11 +129,9 @@ autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else
 
 command! -nargs=? GdiffAutoDetectSourceBranch call GdiffAutoDetectSourceBranch('<f-args>')
 
-" These highlight settings make so much easier to distinguish them!
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
-highlight Pmenu ctermbg=4
-highlight PmenuSel ctermbg=1
-highlight PMenuSbar ctermbg=4
+"Bash
+let g:is_bash=1
+
+"molokai
+autocmd colorscheme molokai highlight Visual ctermbg=10
+colorscheme molokai
