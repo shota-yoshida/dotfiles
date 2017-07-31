@@ -1,0 +1,22 @@
+[user]
+    name = Shouta Yoshida
+    email = shota.yoshida.1003@gmail.com
+[alias]
+    tree = log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\"
+    up = !git remote update -p && git merge --ff-only @{u}
+    br = branch
+    ci = commit
+    st = status
+    gmu = git merge --ff-only @{upstream}
+    find-merge-commit = !bash -c 'git rev-list $1..${2:-master} --ancestry-path | grep -f <(git rev-list $1..${2:-master} --first-parent) | tail -1' -
+    show-merge-commit = !bash -c 'git find-merge-commit "$1" "$2" | xargs git show' -
+[init]
+    templatedir = ~/.git_templates
+[core]
+    pager = less
+[pager]
+    log = less
+    show = less
+    diff = less
+[push]
+    default = simple

@@ -1,0 +1,43 @@
+set horizontal-scroll = 33%
+set line-graphics = yes
+set ignore-space = some
+set ignore-case = yes
+
+set main-view = date author id commit-title:graph=yes,refs=yes
+
+# Colors {{{
+color cursor white black
+color status white default
+color title-focus white black
+color date yellow default
+color author green default
+color main-head magenta default
+color main-tag magenta default
+color stat-staged green default
+color stat-unstaged red default
+color stat-untracked yellow default
+color tree.header white default
+color tree.directory cyan default
+# }}}
+# Bindings {{{
+
+# generic {{{
+
+bind generic <Ctrl-f> scroll-page-down
+bind generic <Ctrl-b> scroll-page-up
+bind main g none
+bind generic g move-first-line
+bind main G none
+bind generic G move-last-line
+bind main C ?git checkout %(branch)
+
+# }}}
+
+# Tree {{{
+
+bind tree V !vim %(file)
+
+# }}}
+
+# }}}
+# vim:set sw=4 ts=4 et:
