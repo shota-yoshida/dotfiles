@@ -33,7 +33,7 @@ set smartindent
 set expandtab
 set wildmenu
 set ruler
-set tag=~/php.tags
+set tags=./.git/.tags;
 set ignorecase
 set smartcase
 set hlsearch
@@ -100,8 +100,11 @@ nnoremap <C-p> gT
 " soramugi/auto-ctags
 "==================================
 let g:auto_ctags = 1
-au BufNewFile,BufRead *.php set tags+=$HOME/php.tags
-let Tlist_Ctags_Cmd='ctags'
+let g:auto_ctags_directory_list = ['.git', '.svn']
+let g:auto_ctags_tags_name = 'tags'
+let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes --regex-php=\"/^[ \t]*const[ \t]+([a-z0-9_]+)/\1/d/i\"'
+"show tag list
+nnoremap <C-]> g<C-]>
 
 "==================================
 " jszakmeister/vim-togglecursor
