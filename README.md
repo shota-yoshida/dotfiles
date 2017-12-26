@@ -2,23 +2,16 @@
 
 ## usage
 
-### zshのインストール
-
+### cloning a repository
 ```
-# zshのインストール
-sudo yum install zsh
-
-# ログインシェルの変更
-chsh -s /bin/zsh
+git clone https://github.com/shota-yoshida/dotfiles.git
 ```
 
-### oh-my-zshのインストール
-```
-curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-```
-
-### シンボリックリンクを張る
+### creating symlinks
 ```
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
+ln -sf ~/dotfiles/.tigrc ~/.tigrc
+ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ```
