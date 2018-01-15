@@ -1,25 +1,34 @@
+if &compatible
+  set nocompatible
+endif
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-call dein#begin(expand('~/.vim/dein'))
-call dein#add('Shougo/dein.vim')
+if dein#load_state(expand('~/.vim/dein'))
+  call dein#begin(expand('~/.vim/dein'))
+  call dein#add('Shougo/dein.vim')
 
-call dein#add('airblade/vim-gitgutter')
-call dein#add('gregsexton/gitv')
-call dein#add('jistr/vim-nerdtree-tabs')
-call dein#add('jszakmeister/vim-togglecursor')
-call dein#add('maksimr/vim-jsbeautify')
-call dein#add('scrooloose/nerdtree')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('soramugi/auto-ctags.vim')
-call dein#add('thinca/vim-quickrun')
-call dein#add('tomasr/molokai')
-call dein#add('tpope/vim-fugitive')
-call dein#add('vim-airline/vim-airline')
-call dein#add('w0rp/ale')
-call dein#add('Xuyuanp/nerdtree-git-plugin')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('gregsexton/gitv')
+  call dein#add('flyinshadow/php_localvarcheck.vim')
+  call dein#add('jistr/vim-nerdtree-tabs')
+  call dein#add('jszakmeister/vim-togglecursor')
+  call dein#add('maksimr/vim-jsbeautify')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('shota-yoshida/moveline')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/neosnippet')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('soramugi/auto-ctags.vim')
+  call dein#add('thinca/vim-quickrun')
+  call dein#add('tomasr/molokai')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('w0rp/ale')
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
 
+  call dein#end()
+  call dein#save_state()
+endif
 
 "##################################
 " basic
@@ -44,6 +53,7 @@ set nocompatible
 set synmaxcol=480
 set helplang& helplang=ja
 syntax enable
+filetype plugin indent on
 let is_bash=1
 
 
@@ -120,3 +130,9 @@ if executable('js-beautify')
   command! -range=% -nargs=* CSSTidy <line1>,<line2>call RangeCSSBeautify()
   command! -range=% -nargs=* JSONTidy <line1>,<line2>call RangeJsonBeautify()
 endif
+
+"==================================
+" flyinshadow/php_localvarcheck.vim
+"==================================
+let g:php_localvarcheck_enable = 1
+let g:php_localvarcheck_global = 0
