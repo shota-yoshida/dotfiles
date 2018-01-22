@@ -20,6 +20,7 @@ if dein#load_state(expand('~/.vim/dein'))
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('soramugi/auto-ctags.vim')
   call dein#add('thinca/vim-quickrun')
+  call dein#add('terryma/vim-multiple-cursors')
   call dein#add('tomasr/molokai')
   call dein#add('tpope/vim-fugitive')
   call dein#add('vim-airline/vim-airline')
@@ -56,6 +57,17 @@ syntax enable
 filetype plugin indent on
 let is_bash=1
 
+"##################################
+" defalt key mapping
+"##################################
+map <Up> <Nop>
+map <Down> <Nop>
+map <Left> <Nop>
+map <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 "##################################
 " color
@@ -92,9 +104,9 @@ let g:neocomplete_php_locale = 'ja'
 "==================================
 " Shougo/neosnippet
 "==================================
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 let g:neosnippet#snippets_directory='~/.vim/snippets'
@@ -103,8 +115,8 @@ let g:neosnippet#snippets_directory='~/.vim/snippets'
 " scrooloose/nerdtree
 "==================================
 map <C-e> <plug>NERDTreeTabsToggle<CR>
-nnoremap <C-n> gt
-nnoremap <C-p> gT
+nnoremap <C-l> gt
+nnoremap <C-h> gT
 
 "==================================
 " soramugi/auto-ctags
@@ -136,3 +148,25 @@ endif
 "==================================
 let g:php_localvarcheck_enable = 1
 let g:php_localvarcheck_global = 0
+
+"==================================
+" terryma/vim-multiple-cursors
+"==================================
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
