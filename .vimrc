@@ -11,21 +11,23 @@ if dein#load_state(expand('~/.vim/dein'))
   call dein#add('gregsexton/gitv')
   call dein#add('flyinshadow/php_localvarcheck.vim')
   call dein#add('jistr/vim-nerdtree-tabs')
-  call dein#add('jszakmeister/vim-togglecursor')
-  call dein#add('maksimr/vim-jsbeautify')
+"  call dein#add('jszakmeister/vim-togglecursor')
+"  call dein#add('maksimr/vim-jsbeautify')
   call dein#add('scrooloose/nerdtree')
-  call dein#add('shota-yoshida/moveline')
+"  call dein#add('shota-yoshida/moveline')
   call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/neosnippet')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('soramugi/auto-ctags.vim')
   call dein#add('thinca/vim-quickrun')
+  call dein#add('thinca/vim-splash')
   call dein#add('terryma/vim-multiple-cursors')
   call dein#add('tomasr/molokai')
   call dein#add('tpope/vim-fugitive')
-  call dein#add('vim-airline/vim-airline')
+"  call dein#add('vim-airline/vim-airline')
   call dein#add('w0rp/ale')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
+  call dein#add('nazo/pt.vim')
 
   call dein#end()
   call dein#save_state()
@@ -53,6 +55,7 @@ set clipboard^=unnamedplus
 set nocompatible
 set synmaxcol=480
 set helplang& helplang=ja
+set history=1000
 syntax enable
 filetype plugin indent on
 let is_bash=1
@@ -94,6 +97,8 @@ augroup END
 " w0rp/ale
 "==================================
 let g:ale_php_phpcs_standard="PSR2"
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 
 "==================================
 " Shougo/neocomplete
@@ -170,3 +175,8 @@ function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
   endif
 endfunction
+
+"==================================
+" thinca/vim-splash
+"==================================
+let g:splash#path = $HOME."/.vim/dein/repos/github.com/thinca/vim-splash/sample/vim_intro.txt"
